@@ -11,7 +11,7 @@ public class AuthorizationTest extends BaseSeleniumTest {
     String password = "secret_sauce";
     String failedPassword = "secret_sauce1";
 
-    @Test
+    @Test(description = "Успешный логин")
     public void successAuth() {
         new AuthPage().goStartPage(baseURL)
                 .setLogin(login)
@@ -20,7 +20,7 @@ public class AuthorizationTest extends BaseSeleniumTest {
                 .assertProductsPageIsOpen();
     }
 
-    @Test
+    @Test(description = "Логин с неверным паролем")
     public void failedAuthFailedPassword() {
         new AuthPage().goStartPage(baseURL)
                 .setLogin(login)
@@ -29,7 +29,7 @@ public class AuthorizationTest extends BaseSeleniumTest {
                 .assertErrorFalsePasswordIsDispayed();
     }
 
-    @Test
+    @Test(description = "Логин заблокированного пользователя")
     public void failedAuthLockedUser() {
         new AuthPage().goStartPage(baseURL)
                 .setLogin(loginLockedUser)
@@ -38,7 +38,7 @@ public class AuthorizationTest extends BaseSeleniumTest {
                 .assertErrorLockedUserIsDispayed();
     }
 
-    @Test
+    @Test(description = "Логин с пустыми полями")
     public void failedAuthFieldsIsEmpty() {
         new AuthPage().goStartPage(baseURL)
                 .setLogin("")
@@ -47,7 +47,7 @@ public class AuthorizationTest extends BaseSeleniumTest {
                 .assertErrorFieldsIsEmptyIsDispayed();
     }
 
-    @Test
+    @Test(description = "Логин пользователем performance_glitch_user")
     public void successAuthWithGlitchUser() {
         new AuthPage().goStartPage(baseURL)
                 .setLogin(loginGlitchUser)
