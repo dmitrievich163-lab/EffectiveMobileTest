@@ -1,18 +1,14 @@
 package Pages;
 
 import io.qameta.allure.Step;
-import org.openqa.selenium.remote.RemoteWebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import java.time.Duration;
+import org.openqa.selenium.WebDriver;
 
 abstract public class BaseSeleniumPage {
 
-    protected static RemoteWebDriver driver;
-    protected static WebDriverWait wait;
+    protected static WebDriver driver;
 
-    public static void setDriver(RemoteWebDriver remoteWebDriver) {
-        driver = remoteWebDriver;
-        wait = new WebDriverWait(driver, Duration.ofSeconds(5), Duration.ofMillis(100));
+    public static void setDriver(WebDriver webDriver) {
+        driver = webDriver;
     }
 
     @Step("Открывается стартовая страница")
@@ -20,8 +16,4 @@ abstract public class BaseSeleniumPage {
         driver.get(startPage);
         return new AuthPage();
     }
-
-//    protected void timeStamp(String name) {
-//        System.out.println("" + java.time.LocalTime.now() + ": " + name);
-//    }
 }
